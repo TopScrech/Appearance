@@ -2,7 +2,7 @@ import SwiftUI
 
 @available(iOS 14, macOS 11, tvOS 14, watchOS 7, *)
 public struct AppearancePicker: View {
-    @AppStorage("saved_appearance") var appearance: Appearance = .system
+    @AppStorage("appearance") public var appearance: Appearance = .system
     
     public init() {
         // Error fix: 'AppearancePicker' initializer is inaccessible due to 'internal' protection level
