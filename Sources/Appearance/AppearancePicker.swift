@@ -1,11 +1,11 @@
 import SwiftUI
 
-@available(iOS 14, macOS 11, tvOS 14, watchOS 7, *)
+@available(iOS 14, macOS 11, watchOS 7, *)
 public struct AppearancePicker: View {
-    @AppStorage("appearance") public var appearance: Appearance = .system
+    @Binding private var appearance: Appearance
     
-    public init() {
-        // Error fix: 'AppearancePicker' initializer is inaccessible due to 'internal' protection level
+    public init(_ appearance: Binding<Appearance>) {
+        _appearance = appearance
     }
     
     public var body: some View {
@@ -21,10 +21,12 @@ public struct AppearancePicker: View {
     }
 }
 
-@available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
+@available(iOS 17, macOS 14, watchOS 10, *)
 #Preview {
+    @Previewable @State var appearance: Appearance = .system
+    
     List {
-        AppearancePicker()
+        AppearancePicker($appearance)
     }
     .preferredColorScheme(.dark)
 }
