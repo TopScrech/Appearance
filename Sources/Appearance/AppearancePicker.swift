@@ -2,11 +2,7 @@ import SwiftUI
 
 @available(iOS 14, macOS 11, tvOS 14, watchOS 7, *)
 public struct AppearancePicker: View {
-    @Binding private var appearance: Appearance
-    
-    public init(_ appearance: Binding<Appearance>) {
-        _appearance = appearance
-    }
+    @AppStorage("saved_appearance") var appearance: Appearance = .system
     
     public var body: some View {
         Section {
@@ -23,10 +19,8 @@ public struct AppearancePicker: View {
 
 @available(iOS 17, macOS 14, tvOS 17, watchOS 10, *)
 #Preview {
-    @Previewable @State var appearance: Appearance = .dark
-    
     List {
-        AppearancePicker($appearance)
+        AppearancePicker()
     }
     .preferredColorScheme(.dark)
 }
