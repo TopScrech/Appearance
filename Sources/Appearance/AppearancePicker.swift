@@ -4,6 +4,10 @@ import SwiftUI
 public struct AppearancePicker: View {
     @AppStorage("saved_appearance") var appearance: Appearance = .system
     
+    public init() {
+        // Error fix: 'AppearancePicker' initializer is inaccessible due to 'internal' protection level
+    }
+    
     public var body: some View {
         Section {
             Picker(selection: $appearance) {
