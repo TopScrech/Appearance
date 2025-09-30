@@ -12,7 +12,8 @@ public struct AppearancePicker: View {
         Section {
             Picker(selection: $appearance) {
                 ForEach(Appearance.allCases) {
-                    Text($0.localizedName).tag($0)
+                    Text($0.localizedName)
+                        .tag($0)
                 }
             } label: {
                 Label("Appearance", systemImage: "paintbrush")
