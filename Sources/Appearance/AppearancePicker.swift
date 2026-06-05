@@ -12,11 +12,15 @@ public struct AppearancePicker: View {
         Section {
             Picker(selection: $appearance) {
                 ForEach(Appearance.allCases) {
-                    Text($0.localizedName)
+                    Text(verbatim: $0.localizedNameText)
                         .tag($0)
                 }
             } label: {
-                Label("Appearance", systemImage: "paintbrush")
+                Label {
+                    Text(verbatim: Appearance.localized("Appearance"))
+                } icon: {
+                    Image(systemName: "paintbrush")
+                }
             }
         }
     }

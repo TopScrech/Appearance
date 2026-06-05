@@ -17,10 +17,18 @@ public enum Appearance: String, Identifiable, CaseIterable {
     }
     
     public var localizedName: LocalizedStringKey {
+        LocalizedStringKey(localizedNameText)
+    }
+    
+    var localizedNameText: String {
         switch self {
-        case .dark:   "Dark"
-        case .light:  "Light"
-        case .system: "System"
+        case .dark:   Self.localized("Dark")
+        case .light:  Self.localized("Light")
+        case .system: Self.localized("System")
         }
+    }
+    
+    static func localized(_ key: String) -> String {
+        NSLocalizedString(key, bundle: .module, comment: "")
     }
 }

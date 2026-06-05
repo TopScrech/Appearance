@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Appearance",
+    defaultLocalization: "en",
     platforms: [
         .iOS(.v13),
         .macOS(.v10_15),
@@ -13,6 +14,9 @@ let package = Package(
         .library(name: "Appearance", targets: ["Appearance"])
     ],
     targets: [
-        .target(name: "Appearance")
+        .target(
+            name: "Appearance",
+            resources: [.process("Resources")]
+        )
     ]
 )
